@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Form List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>お問合せリスト</h1>
+<div>
+    <div th:each="contact : ${contacts}">
+        <p th:text="'名前: ' + ${contact['name']}"></p>
+        <p th:text="'メールアドレス：: ' + ${contact['email']}"></p>
+        <p th:text="'メッセージ: ' + ${contact['message']}"></p>
+        <hr>
+    </div>
+    <a href="/"><li>TOPページへ戻る</li></a>
+    <a href="/form/delete"><li>削除</li></a>
+</div>
+</body>
+</html>

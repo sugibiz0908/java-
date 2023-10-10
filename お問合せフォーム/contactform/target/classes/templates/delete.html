@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Form List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>お問合せリスト</h1>
+<form action="#" th:action="@{/form/delete}" method="post">
+    <div th:each="contact : ${contacts}">
+        <input type="checkbox" th:id="${'checkbox-' + contact.id}" th:name="selectedContact" th:value="${contact.id}" />
+        <p th:text="'名前: ' + ${contact.name}"></p>
+        <p th:text="'メールアドレス: ' + ${contact.email}"></p>
+        <p th:text="'メッセージ: ' + ${contact.message}"></p>
+        <hr>
+    </div>
+    <style>
+ 	  .button-container {
+       margin-top: 1em; /* ボタン間に1行のスペースを追加 */
+       margin-bottom: 1rem;
+  }
+	</style>
+
+<div class="button-container">
+  <button type="submit">選択した項目を削除</button>
+</div>
+
+<div class="button-container">
+  <a href="/form/list"><button type="button">お問い合わせリストへ戻る</button></a>
+</div>
+</form>
+</body>
+</html>
