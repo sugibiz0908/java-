@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Form</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" >
+</head>
+</head>
+<body>
+    <h1>お問合せフォーム</h1>
+    <form action="#" th:action="@{/form/result}" th:object="${contactRegisterForm}" method="post">
+        <div>
+            <p>名前：
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></div>
+                <input type="text" th:field="*{name}">
+            </p>
+        </div>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></div>
+        <p>メールアドレス：<input type="text" th:field="*{email}"></p>
+        <div th:if="${#fields.hasErrors('message')}" th:errors="*{message}" class="error-message"></div>
+        <p>メッセージ：<textarea th:field="*{message}" cols="100"></textarea></p>
+        <p><input type="submit" value="送信"></p>
+        <a href="/"><li>お問合せメニューへ戻る</li></a>
+    </form>
+</body>
+</html>
